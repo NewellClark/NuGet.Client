@@ -212,4 +212,8 @@
     <value>The element 'icon' cannot be empty.</value>
     <comment>Please, don't localize icon</comment>
   </data>
+  <data name="IconInvalidExtension" xml:space="preserve">
+    <value>The 'icon' element {0} has an invalid file extension. Valid options are .png, .jpg or .jpeg.</value>
+    <comment>0 - Icon entry in the nuspec</comment>
+  </data>
 </root>
