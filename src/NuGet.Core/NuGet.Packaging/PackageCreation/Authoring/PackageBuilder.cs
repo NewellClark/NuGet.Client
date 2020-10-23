@@ -669,6 +669,14 @@ namespace NuGet.Packaging
                             PathUtility.StripLeadingDirectorySeparators(f.Path),
                             PathUtility.GetStringComparisonBasedOnOS()));
 
+                var ext = Path.GetExtension(iconPath);
+                if(string.IsNullOrEmpty(ext) || !IsKnownExtension(ext))
+                {
+                    throw new PackagingException(
+                        NuGetLogCode.NU5502,
+                        string.Format(CultureInfo.CurrentCulture, NuGetResources.UnknownIconExtension, iconPath));
+                }
+
                 if (iconFileList.Count() == 0)
                 {
                     throw new PackagingException(
