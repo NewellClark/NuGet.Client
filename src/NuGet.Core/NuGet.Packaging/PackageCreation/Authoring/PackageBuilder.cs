@@ -654,10 +654,10 @@ namespace NuGet.Packaging
                 var iconPathStripped = PathUtility.StripLeadingDirectorySeparators(iconPath);
 
                 var ext = Path.GetExtension(iconPath);
-                if (!string.IsNullOrEmpty(ext) &&
+                if (string.IsNullOrEmpty(ext) || (
                         !ext.Equals(".jpeg", StringComparison.OrdinalIgnoreCase) &&
                         !ext.Equals(".jpg", StringComparison.OrdinalIgnoreCase) &&
-                        !ext.Equals(".png", StringComparison.OrdinalIgnoreCase))
+                        !ext.Equals(".png", StringComparison.OrdinalIgnoreCase)))
                 {
                     throw new PackagingException(
                         NuGetLogCode.NU5045,
@@ -668,14 +668,6 @@ namespace NuGet.Packaging
                         iconPathStripped.Equals(
                             PathUtility.StripLeadingDirectorySeparators(f.Path),
                             PathUtility.GetStringComparisonBasedOnOS()));
-
-                var ext = Path.GetExtension(iconPath);
-                if(string.IsNullOrEmpty(ext) || !IsKnownExtension(ext))
-                {
-                    throw new PackagingException(
-                        NuGetLogCode.NU5502,
-                        string.Format(CultureInfo.CurrentCulture, NuGetResources.UnknownIconExtension, iconPath));
-                }
 
                 if (iconFileList.Count() == 0)
                 {
