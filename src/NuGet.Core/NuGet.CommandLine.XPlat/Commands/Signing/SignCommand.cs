@@ -18,9 +18,9 @@ namespace NuGet.CommandLine.XPlat
             app.Command("sign", signCmd =>
             {
                 CommandArgument packagePaths = signCmd.Argument(
-                    "<package-paths>",
+                    "<packages-path>",
                     Strings.SignCommandPackagePathDescription,
-                    multipleValues: true);
+                    multipleValues: false);
 
                 CommandOption outputDirectory = signCmd.Option(
                     "-o|--output",
@@ -88,6 +88,8 @@ namespace NuGet.CommandLine.XPlat
                     "--interactive",
                     Strings.Verbosity_Description,
                     CommandOptionType.NoValue);
+
+                signCmd.Description = Strings.SignCommandDescription;
             });
         }
     }

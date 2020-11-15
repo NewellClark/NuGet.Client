@@ -1666,6 +1666,15 @@ namespace NuGet.CommandLine.XPlat {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Signs NuGet package(s) at &lt;package-path&gt; with the specified certificate..
+        /// </summary>
+        internal static string SignCommandDescription {
+            get {
+                return ResourceManager.GetString("SignCommandDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hash algorithm to be used to sign the package. Defaults to SHA256..
         /// </summary>
         internal static string SignCommandHashAlgorithmDescription {

@@ -810,4 +810,7 @@ The search is a case-insensitive string comparison using the supplied value, whi
   <data name="SignCommandTimestampHashAlgorithmDescription" xml:space="preserve">
     <value>Hash algorithm to be used by the RFC 3161 timestamp server. Defaults to SHA256.</value>
   </data>
+  <data name="SignCommandDescription" xml:space="preserve">
+    <value>Signs NuGet package(s) at &lt;package-path&gt; with the specified certificate.</value>
+  </data>
 </root>
