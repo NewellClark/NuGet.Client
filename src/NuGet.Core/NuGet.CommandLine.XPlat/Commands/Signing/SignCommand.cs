@@ -1,4 +1,4 @@
-﻿// Copyright (c) .NET Foundation. All rights reserved.
+// Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
@@ -17,59 +17,64 @@ namespace NuGet.CommandLine.XPlat
         {
             app.Command("sign", signCmd =>
             {
+                CommandArgument packagePaths = signCmd.Argument(
+                    "<package-paths>",
+                    Strings.SignCommandPackagePathDescription,
+                    multipleValues: true);
+
                 CommandOption outputDirectory = signCmd.Option(
                     "-o|--output",
-                    Strings.Verbosity_Description,
+                    Strings.SignCommandOutputDirectoryDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption path = signCmd.Option(
                     "--certificate-path",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandCertificatePathDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption store = signCmd.Option(
                     "--certificate-store-name",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandCertificateStoreNameDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption location = signCmd.Option(
                     "--certificate-store-location",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandCertificateStoreLocationDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption subject = signCmd.Option(
                     "--certificate-subject-name",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandCertificateSubjectNameDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption fingerPrint = signCmd.Option(
                     "--certificate-fingerprint",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandCertificateFingerprintDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption password = signCmd.Option(
                     "--certificate-password",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandCertificatePasswordDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption algorithm = signCmd.Option(
                     "--hash-algorithm",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandHashAlgorithmDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption timestamper = signCmd.Option(
                     "--timestamper",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandTimestamperDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption timestamperAlgorithm = signCmd.Option(
                     "--timestamp-hash-algorithm",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandTimestampHashAlgorithmDescription,
                     CommandOptionType.SingleValue);
 
                 CommandOption overwrite = signCmd.Option(
                     "--overwrite",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
+                    Strings.SignCommandOverwriteDescription,
                     CommandOptionType.NoValue);
 
                 signCmd.HelpOption(XPlatUtility.HelpOption);
@@ -82,12 +87,7 @@ namespace NuGet.CommandLine.XPlat
                 CommandOption interactive = signCmd.Option(
                     "--interactive",
                     Strings.Verbosity_Description,
-                    CommandOptionType.SingleValue);
-
-                CommandOption config = signCmd.Option(
-                    "--configfile",
-                    Strings.VerifyCommandCertificateFingerprintDescription,
-                    CommandOptionType.SingleValue);
+                    CommandOptionType.NoValue);
             });
         }
     }
